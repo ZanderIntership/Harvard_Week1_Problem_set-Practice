@@ -1,29 +1,42 @@
 #include <cs50.h>
+#include <stdbool.h>
 #include <stdio.h>
 
 int main(void)
 {
-    int height;
-    do
+    string spacing = " ";
+    string Blocks = "#";
+    bool Continue = false;
+    int height = 0;
+
+    while (Continue == false)
     {
         height = get_int("Height: ");
-    }
-    while (height < 1 || height > 8);  // ensure valid height
-
-    for (int i = 0; i < height; i++)
-    {
-        // Print spaces
-        for (int j = 0; j < height - i - 1; j++)
+        if (height > 0)
         {
-            printf(" ");
+            Continue = true;
+        }
+    }
+    int row = 0;
+
+    while (row < height && height >= 0)
+    {
+        bool allowed = true;
+
+        for (int k = height - row - 1; k > 0; k--)
+        {
+            if (allowed)
+            {
+                printf("%s", spacing);
+            }
         }
 
-        // Print blocks
-        for (int k = 0; k <= i; k++)
+        for (int j = 0; j <= row; j++)
         {
-            printf("#");
+            printf("%s", Blocks);
         }
 
         printf("\n");
+        row++;
     }
 }
